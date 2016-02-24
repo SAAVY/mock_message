@@ -2,9 +2,10 @@
     <div id="sidebar" >
         <div style="width: 100%" ng-repeat="name in names">
             {{name}}
-            <hr>
+            <hr style="color: black">
         </div>
     </div>
+    <div id="separator"/>
     <div id="main">
         <div id="message_list">
             <div ng-repeat="message in messages track by $index">

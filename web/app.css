@@ -136,15 +136,26 @@
 
 #sidebar {
     float:left;
-    width:25%;
-    background:#c9c;
+    width:24%;
+    display: inline-block;
+}
+
+#separator {
+    width: 1px;
+    background-color: black;
+    float: left;
+    display: inline-block;
 }
 
 #main {
     float:right;
     width:75%;
+    padding-left: 50px;
+    display: inline-block;
 }
 #message_container {
     width: 100%;
+    height: inherit;
+    display: inline-block;
 
 }
