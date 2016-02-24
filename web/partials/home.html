@@ -8,9 +8,7 @@
     <div id="separator"/>
     <div id="main">
         <div id="message_list">
-            <div ng-repeat="message in messages track by $index">
-                {{message}}
-            </div>
+            <div ng-repeat="message in messages track by $index" ng-bind-html="message"></div>
         </div>
         <div id="message_box">
             <table>
