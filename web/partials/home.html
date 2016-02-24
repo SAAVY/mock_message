@@ -1,0 +1,28 @@
+<div id="message_container" ng-controller="messageController">
+    <div id="sidebar" ng-repeat="name in names">
+        <div style="width: 100%">
+            {{name}}
+            <hr>
+        </br>
+        </div>
+    </div>
+    <div id="main">
+        <div id="message_list">
+            <div ng-repeat="message in messages track by $index">
+                {{message}}
+            </div>
+        </div>
+        <div id="message_box">
+            <table>
+                <tr>
+                    <td>
+                        <input id="message_input" type="text" ng-model="currentMessage">
+                    </td>
+                    <td>
+                        <button id="message_submit" ng-click="sendMessage()" class="btn btn-primary btn-lg">Send</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <title>Varun Senguttuvan</title>
+
+  <!-- libraries -->
+  <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="libs/jquery.min.js"></script>
+  <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+  <script src="libs/angular/angular.min.js"></script>
+  <script src="libs/angular/angular-route.min.js"></script>
+  <script src="libs/angular/angular-animate.min.js"></script>
+  <script src="libs/angular/angular-ui-router.min.js"></script>
+  <!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
+
+  <!-- JavaScript Source -->
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/directives.js"></script>
+
+  <!-- JavaScript Controllers -->
+  <script src="js/simpleControllers.js"></script>
+  <script src="js/messageController.js"></script>
+</head>
+
+
+
+<body ng-app="personalWebsite">
+  <div ng-controller="navbarController">
+    <div nav-bar></div>
+  </div>
+  <div style="margin-left:10%; margin-right:10%">
+    <div ng-view></div>
+  </div>
+</body>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73527102-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</html>
