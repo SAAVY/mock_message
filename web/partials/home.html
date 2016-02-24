@@ -1,9 +1,8 @@
 <div id="message_container" ng-controller="messageController">
-    <div id="sidebar" ng-repeat="name in names">
-        <div style="width: 100%">
+    <div id="sidebar" >
+        <div style="width: 100%" ng-repeat="name in names">
             {{name}}
             <hr>
-        </br>
         </div>
     </div>
     <div id="main">
