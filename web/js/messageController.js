@@ -47,7 +47,7 @@ angular.module('personalWebsite.controllers').controller('messageController', ['
         }
         cardHtml += "<div class=\"header\">";
         if (validJson['data']['favicon'] != null) {
-            cardHtml += "<img class=\"favicon\" src=\"" +  validJson['data']['favicon'] + "\"/>";
+            cardHtml += "<img class=\"favicon\" width=\"30px\" src=\"" +  validJson['data']['favicon'] + "\"/>";
         }
         if (validJson['data']['provider_url'] != null) {
             cardHtml += "<span>" + validJson['data']['provider_url'] + "</span>";
