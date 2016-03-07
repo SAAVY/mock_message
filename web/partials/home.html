@@ -5,22 +5,13 @@
             <hr style="color: black">
         </div>
     </div>
-    <div id="separator"/>
     <div id="main">
         <div id="message_list">
             <div ng-repeat="message in messages track by $index" ng-bind-html="message"></div>
         </div>
         <div id="message_box">
-            <table>
-                <tr>
-                    <td>
-                        <input id="message_input" type="text" ng-model="currentMessage">
-                    </td>
-                    <td>
-                        <button id="message_submit" ng-click="sendMessage()" class="btn btn-primary btn-lg">Send</button>
-                    </td>
-                </tr>
-            </table>
+            <input id="message_input" type="text" ng-model="currentMessage">
+            <button id="message_submit" ng-click="sendMessage()" class="btn btn-primary btn-lg">Send</button>
         </div>
     </div>
 </div>

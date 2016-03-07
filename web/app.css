@@ -48,31 +48,6 @@
     left: -6px;
 }
 
-#social-media-div > table {
-    margin-left:auto;
-    margin-right:auto;
-    width:100%;
-    table-layout: fixed;
-}
-
-#social-media-div > table td {
-    text-align: center;
-}
-
-#social-media-text td {
-    height: 35px;
-}
-
-#social-media-text p {
-    display: none;
-}
-
-#resume-div > table {
-    margin-left:auto;
-    margin-right:auto;
-    width:100%;
-    table-layout: fixed;
-}
 
 /*--- htmlresume.html ---*/
 
@@ -128,6 +103,7 @@
 	border: 7px solid rgba(0, 0, 0, 0.2)
 	background: rgba(0, 0, 0, 0.003);
 	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+    max-width: 90%;
 }
 
 #message_submit {
@@ -152,90 +128,90 @@
     width:75%;
     padding-left: 50px;
     display: inline-block;
+    border-left: 1px solid rgba(0, 0, 0, .30);
 }
 #message_container {
     width: 100%;
-    height: inherit;
-    display: inline-block;
+    min-height: 100%;
+    position: relative;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#message_list {
+    height: 80vh; /* Changed this height */
+    padding-bottom:60px;
+    overflow: scroll;
+}
 
+#message_bubble {
+    background-color: #0084FF;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+    color: white;
+    font-weight: 200;
 }
 
 .card {
-	max-width: 800px;
-	max-height: 500px;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	display: block;
-	border-left: 8px solid #CCC;
-	overflow: hidden;
-	padding: 15px 25px 25px 20px;
-	/*@include box-shadow( #ccc 1px 2px 7px 0 );
-	@include border-top-right-radius( 5px );
-	@include border-bottom-right-radius( 8px );*/
+    max-width: 350px;
+    max-height: 350px;
+    padding: 10px 10px 10px 10px;
+    display: block;
+    border-radius: 15px;
+    border: 1px solid #0084FF;
+    background-color: white;
+    margin-bottom: 5px;
 }
 
-.card.has-images .left-col {
-	width: 33%;
-	float: left;
-    margin-right: 20px;
+.card.has-images .top-div {
+    max-width: 100%;
+    max-height: 175px;
+    position: relative;
+    overflow: hidden;
 }
 
-.card.has-media .left-col {
-	width: 66%;
-	float: left;
+.card.has-images .bottom-div {
+    max-width: 100%;
+    max-height: 45%;
+    overflow: hidden;
 }
 
-.card .left-col {
-	overflow: hidden;
-	height: 100%;
+.card.has-media .top-div {
+    max-width: 100%;
+    overflow: hidden;
+    zoom: 0.65;
+    -moz-transform: scale(0.65);
+    -moz-transform-origin: 0 0;
 }
 
-.card.has-images .left-col img {
-	max-width: 100%;
-	height: 100%;
-    height: auto;
-    width: auto\9; /* ie8 */
-    padding: 10px;
-
-}
-
-.card.has-images .right-col {
-	width: 60%;
-	margin-left: 20px;
-}
-
-.card.has-media .right-col {
-	width: 30%;
-}
-
-.card .right-col {
-	overflow: hidden;
-
-	.title {
-		margin-top: 0px;
-	}
+.card.has-media .bottom-div {
+    max-width: 100%;
+    max-height: 45%;
+    overflow: hidden;
+    a {
+        text-decoration: none;
+        background-color: none;
+    }
 }
 
 .card .header {
 	display: block;
-	height: 30px;
+	max-height: 50px;
 	width: 100%;
 	overflow: hidden;
 	margin-bottom: 5px;
+}
 
-	.favicon {
-		height: 100%;
-		width: auto;
-	    width: auto\9; /* ie8 */
-	    float: left;
-	    padding: 3px;
-	    margin-right: 10px;
-	}
+.card .see-more {
+   text-decoration: none;
+   background-color: none;
+}
 
-	.website-name {
-		p {
-			line-height: 30px;
-			font-weight: bold;
-		}
-	}
+.favicon {
+    padding-right: 10px;
 }
