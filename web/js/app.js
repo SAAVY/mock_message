@@ -5,11 +5,10 @@ var blogfiles = [
   'bloomberg-internship'
 ];
 
-// TODO: Remove the fucking hashtag from the URL
 // Declare app level module which depends on views, and components
-angular.module('personalWebsite', [
-  'personalWebsite.controllers',
-  'personalWebsite.directives',
+angular.module('magpieDemo', [
+  'magpieDemo.controllers',
+  'magpieDemo.directives',
   'ngRoute',
   'ngAnimate',
   'ui.router'

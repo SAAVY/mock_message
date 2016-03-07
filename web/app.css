@@ -78,7 +78,9 @@
 
 #message_input {
 	padding: 16px 16px 16px 16px;
-	border: 7px solid rgba(0, 0, 0, 0.2)
+    height: 60px;
+	border: 5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 	background: rgba(0, 0, 0, 0.003);
 	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
     max-width: 90%;
@@ -104,7 +106,7 @@
 #main {
     float:right;
     width:75%;
-    padding-left: 50px;
+    padding-left: 30px;
     display: inline-block;
     border-left: 1px solid rgba(0, 0, 0, .30);
 }
@@ -148,8 +150,8 @@
 
 .card.has-images .top-div {
     max-width: 100%;
-    max-height: 175px;
-    position: relative;
+    max-height: 55%;
+    zoom: 0.25;
     overflow: hidden;
 }
 
@@ -162,9 +164,10 @@
 .card.has-media .top-div {
     max-width: 100%;
     overflow: hidden;
-    zoom: 0.65;
-    -moz-transform: scale(0.65);
-    -moz-transform-origin: 0 0;
+    max-height: 55%;
+    zoom: 0.70;
+    /*-moz-transform: scale(0.65);
+    -moz-transform-origin: 0 0;*/
 }
 
 .card.has-media .bottom-div {

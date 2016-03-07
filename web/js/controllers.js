@@ -1,1 +1,1 @@
-angular.module('personalWebsite.controllers', []);
+angular.module('magpieDemo.controllers', []);

@@ -1,4 +1,4 @@
-angular.module('personalWebsite.controllers').controller('messageController', ['$scope', '$location', '$sce', '$http',  function($scope, $location, $sce, $http) {
+angular.module('magpieDemo.controllers').controller('messageController', ['$scope', '$location', '$sce', '$http',  function($scope, $location, $sce, $http) {
     $scope.messages = [];
     $scope.currentMessage = "";
     $scope.htmlContent = "";
@@ -61,10 +61,10 @@ angular.module('personalWebsite.controllers').controller('messageController', ['
         if (validJson['data']['media'] != null
         && validJson['data']['media']['data'] != null
         && validJson['data']['media']['data'][0]['iframe'] != null) {
-            cardHtml += "<div class=\"media\">" + validJson['data']['media']['data'][0]['iframe'] + "</div>";
+            cardHtml += "<div class=\"media\" width=\"100%\">" + validJson['data']['media']['data'][0]['iframe'] + "</div>";
         } else if (validJson['data']['images'] != null && validJson['data']['images']['data'] != null) {
             cardHtml += "<div class=\"images\">";
-            cardHtml += "<img class=\"image\" src=\"" + validJson['data']['images']['data'][0]['url'] + "\"></img>";
+            cardHtml += "<img class=\"image\" src=\"" + validJson['data']['images']['data'][0]['url'] + "\" width=\"100%\"></img>";
             cardHtml += "</div>";
         }
         cardHtml += "</div>"; //Closes Left Col Div
