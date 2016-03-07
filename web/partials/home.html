@@ -10,8 +10,10 @@
             <div ng-repeat="message in messages track by $index" ng-bind-html="message"></div>
         </div>
         <div id="message_box">
-            <input id="message_input" type="text" ng-model="currentMessage">
-            <button id="message_submit" ng-click="sendMessage()" class="btn btn-primary btn-lg">Send</button>
+            <form ng-submit="sendMessage()">
+                <input id="message_input" type="text" ng-model="currentMessage">
+                <input type="submit" value="Send" class="btn btn-primary btn-lg" id="message_submit"/>
+            </form>
         </div>
     </div>
 </div>

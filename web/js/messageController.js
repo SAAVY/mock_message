@@ -4,6 +4,9 @@ angular.module('personalWebsite.controllers').controller('messageController', ['
     $scope.htmlContent = "";
     $scope.names = ["Magpie", "Meenu", "Alice"];
     $scope.sendMessage = function() {
+        if ($scope.currentMessage == "") {
+            return;
+        }
         var messageBubble = "<div id=\"message_bubble\">" + $scope.currentMessage + "</div>"
         $scope.htmlContent = $sce.trustAsHtml(messageBubble);
         $scope.messages.push($scope.htmlContent);
