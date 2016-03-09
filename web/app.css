@@ -155,6 +155,7 @@
     overflow: hidden;
     /*-moz-transform: scale(0.65);
     -moz-transform-origin: 0 0;*/
+    display: inline-block;;
 }
 
 .card.has-images .bottom-div {
