@@ -65,7 +65,7 @@ angular.module('magpieDemo.controllers').controller('messageController', ['$scop
         } else if (validJson['data']['images'] != null && validJson['data']['images']['data'] != null) {
             cardHtml += "<div class=\"images\">";
             cardHtml += "<img class=\"image\" src=\"" + validJson['data']['images']['data'][0]['url'] + "\" width=\"100%\"></img>";
-            cardHtml += "</div>";
+            cardHtml += "</div>";            
         }
         cardHtml += "</div>"; //Closes Left Col Div
 
