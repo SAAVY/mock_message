@@ -1,45 +1,43 @@
-angular.module('magpieDemo.controllers').controller('messageController', ['$scope', '$location', '$sce', '$http',  function($scope, $location, $sce, $http) {
-    $scope.messages = [];
+angular.module('magpieDemo.controllers').controller('messageController', ['$scope', '$location', '$sce', '$http', '$window', function($scope, $location, $sce, $http, $window) {
+    $scope.names = ["Alice", "Avy", "Meenu", "Samiya", "Varun"];
+    $scope.currentReceiver = "Alice";
     $scope.currentMessage = "";
-    $scope.htmlContent = "";
-    $scope.names = ["Magpie", "Meenu", "Alice"];
-    $scope.sendMessage = function() {
-        if ($scope.currentMessage == "") {
-            return;
-        }
-        var messageBubble = "<div id=\"message_bubble\">" + $scope.currentMessage + "</div>"
-        $scope.htmlContent = $sce.trustAsHtml(messageBubble);
-        $scope.messages.push($scope.htmlContent);
-        var urlArray = [];
-        var matchArray;
+    $scope.alicesMessages = [];
+    $scope.meenusMessages = [];
+    $scope.avysMessages = [];
+    $scope.samiyasMessages = [];
+    $scope.varunsMessages = [];
 
-        // Regular expression to find FTP, HTTP(S) and email URLs.
-        var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)/g;
-
-        // Iterate through any URLs in the text.
-        while( (matchArray = regexToken.exec( $scope.currentMessage )) !== null ) {
-            var token = matchArray[0];
-            urlArray.push(token);
+    $scope.getBgColor = function(curName) {
+        if(curName == $scope.currentReceiver) {
+          return "#D3D3D3";
         }
-
-        if ($scope.currentMessage.substring(0,6) == "/giphy") {
-            urlArray.push($scope.currentMessage);
-        }
-
-        for (var i = 0; i < urlArray.length; i++) {
-            $http({
-                method: 'GET',
-                url: 'http://localhost:5000/website?src=' + urlArray[i] + '&desc_cap=100'
-            }).then(function successCallback(response) {
-                console.log(response);
-                var card = $scope.createCard(response.data);
-                $scope.messages.push($sce.trustAsHtml(card));
-            }, function errorCallback(response) {
-                alert(response);
-            });
-        }
-        $scope.currentMessage = "";
+        return "white";
     }
+
+    $scope.getMessages = function() {
+      if ($scope.currentReceiver == "Alice") {
+          return $scope.alicesMessages;
+      }
+      if ($scope.currentReceiver == "Avy") {
+          return $scope.avysMessages;
+      }
+      if ($scope.currentReceiver == "Meenu") {
+          return $scope.meenusMessages;
+      }
+      if ($scope.currentReceiver == "Samiya") {
+          return $scope.samiyasMessages;
+      }
+      if ($scope.currentReceiver == "Varun") {
+          return $scope.varunsMessages;
+      }
+    }
+
+    $scope.setReceiver = function(receiverName) {
+      console.log(receiverName);
+      $scope.currentReceiver = receiverName;
+    }
+
     $scope.createCard = function(json) {
         var cardHtml = "";
         console.log(json);
@@ -68,7 +66,7 @@ angular.module('magpieDemo.controllers').controller('messageController', ['$scop
             cardHtml += "<div class=\"media\" width=\"100%\">" + validJson['data']['media']['data'][0]['iframe'] + "</div>";
         } else if (validJson['data']['images'] != null && validJson['data']['images']['data'] != null) {
             cardHtml += "<div class=\"images\">";
-            cardHtml += "<img class=\"image\" src=\"" + validJson['data']['images']['data'][0]['url'] + "\" width=\"100%\"></img>";
+            cardHtml += "<img class=\"image\" src=\"" + validJson['data']['images']['data'][0]['url'] + "\" max-width=\"400px\" max-height=\"300px\"></img>";
             cardHtml += "</div>";
         }
         cardHtml += "</div>"; //Closes Left Col Div
@@ -85,6 +83,85 @@ angular.module('magpieDemo.controllers').controller('messageController', ['$scop
             cardHtml += "<p class=\"desc\">" + validJson['data']['description'] + "</p>";
         }
         cardHtml += "</div></div>";
+        console.log(cardHtml);
         return cardHtml;
     }
+
+    $window.setInterval(function() {
+      var elem = document.getElementById('message_list');
+      elem.scrollTop = elem.scrollHeight;
+    }, 100);
+
+    $scope.sendMessage = function() {
+        console.log($scope.currentReceiver);
+        if ($scope.currentMessage == "") {
+            return;
+        }
+        var messageBubble = "<div id=\"message_bubble\">" + $scope.currentMessage + "</div>"
+        $scope.htmlContent = $sce.trustAsHtml(messageBubble);
+
+        if ($scope.currentReceiver == "Alice") {
+            $scope.alicesMessages.push($scope.htmlContent);
+        }
+        if ($scope.currentReceiver == "Avy") {
+            $scope.avysMessages.push($scope.htmlContent);
+        }
+        if ($scope.currentReceiver == "Meenu") {
+            $scope.meenusMessages.push($scope.htmlContent);
+        }
+        if ($scope.currentReceiver == "Samiya") {
+            $scope.samiyasMessages.push($scope.htmlContent);
+        }
+        if ($scope.currentReceiver == "Varun") {
+            $scope.varunsMessages.push($scope.htmlContent);
+        }
+
+        var urlArray = [];
+        var matchArray;
+
+        // Regular expression to find FTP, HTTP(S) and email URLs.
+        var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)/g;
+
+        // Iterate through any URLs in the text.
+        while( (matchArray = regexToken.exec( $scope.currentMessage )) !== null ) {
+            var token = matchArray[0];
+            urlArray.push(token);
+        }
+
+        if ($scope.currentMessage.substring(0,7) == "/giphy ") {
+            urlArray.push($scope.currentMessage);
+        }
+
+        for (var i = 0; i < urlArray.length; i++) {
+            var curReceiver = $scope.currentReceiver;
+            $http({
+                method: 'GET',
+                url: 'http://localhost:5000/website?src=' + urlArray[i] + '&desc_cap=100'
+            }).then(function successCallback(response) {
+                console.log(response);
+                var card = $scope.createCard(response.data);
+
+                if (curReceiver == "Alice") {
+                    $scope.alicesMessages.push($sce.trustAsHtml(card));
+                }
+                if (curReceiver == "Avy") {
+                    $scope.avysMessages.push($sce.trustAsHtml(card));
+                }
+                if (curReceiver == "Meenu") {
+                    $scope.meenusMessages.push($sce.trustAsHtml(card));
+                }
+                if (curReceiver == "Samiya") {
+                    $scope.samiyasMessages.push($sce.trustAsHtml(card));
+                }
+                if (curReceiver == "Varun") {
+                    $scope.varunsMessages.push($sce.trustAsHtml(card));
+                }
+            }, function errorCallback(response) {
+                alert(response);
+            });
+        }
+        $scope.currentMessage = "";
+    }
+
+
 }]);
