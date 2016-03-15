@@ -1,19 +1,59 @@
 <div id="message_container" ng-controller="messageController">
     <div id="sidebar" >
-        <div style="width: 100%" ng-repeat="name in names">
-            {{name}}
-            <hr style="color: black">
+        <div style="width: 100%; background:getBgColor(name)" ng-repeat="name in names" ng-click="setReceiver(name)">
+            <div ng-show="name == currentReceiver">
+              <img src="/resources/{{name}}.png" width="60px">&nbsp;&nbsp;<b><u>{{name}}</u></b>
+            </div>
+            <div ng-show="name != currentReceiver">
+              <img src="/resources/{{name}}.png" width="60px">&nbsp;&nbsp;{{name}}
+            </div>
+            <hr style="color: black" />
         </div>
     </div>
     <div id="main">
-        <div id="message_list">
-            <div ng-repeat="message in messages track by $index" ng-bind-html="message"></div>
+        <div id="message_list" ng-show="currentReceiver == 'Alice' ">
+            <div ng-repeat="message1 in alicesMessages track by $index" ng-bind-html="message1"></div>
         </div>
-        <div id="message_box">
+        <div id="message_list" ng-show="currentReceiver == 'Avy' ">
+            <div ng-repeat="message2 in avysMessages track by $index" ng-bind-html="message2"></div>
+        </div>
+        <div id="message_list" ng-show="currentReceiver == 'Meenu' ">
+            <div ng-repeat="message3 in meenusMessages track by $index" ng-bind-html="message3"></div>
+        </div>
+        <div id="message_list" ng-show="currentReceiver == 'Samiya' ">
+            <div ng-repeat="message4 in samiyasMessages track by $index" ng-bind-html="message4"></div>
+        </div>
+        <div id="message_list" ng-show="currentReceiver == 'Varun' ">
+            <div ng-repeat="message5 in varunsMessages track by $index" ng-bind-html="message5"></div>
+        </div>
+        <div id="message_box" style="width:100%; margin-bottom:20px">
             <form ng-submit="sendMessage()">
-                <input id="message_input" type="text" ng-model="currentMessage">
-                <input type="submit" value="Send" class="btn btn-primary btn-lg" id="message_submit"/>
+              <table style="width:100%">
+              <tr>
+                <td>
+                  <input id="message_input" type="text" ng-model="currentMessage">
+                </td>
+                <td style="width: 20px;">
+                  <input type="submit" value="Send" class="btn btn-primary btn-lg" id="message_submit"/>
+                </td>
+              </tr>
+              </table>
             </form>
         </div>
+<!--
+        <div id="message_box" style="width:100%">
+            <hr />
+            <table style="width:100%">
+            <tr>
+              <td>
+                <input id="message_input" type="text" ng-model="currentMessage">
+              </td>
+              <td>
+                <input type="submit" value="Send" class="btn btn-primary btn-lg" id="message_submit"/>
+              </td>
+            </tr>
+            </table>
+            <hr />
+        </div> -->
     </div>
 </div>
