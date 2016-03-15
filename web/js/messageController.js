@@ -136,7 +136,7 @@ angular.module('magpieDemo.controllers').controller('messageController', ['$scop
             var curReceiver = $scope.currentReceiver;
             $http({
                 method: 'GET',
-                url: 'http://localhost:5000/website?src=' + urlArray[i] + '&desc_cap=100'
+                url: 'http://52.33.243.223:5000/website?src=' + urlArray[i] + '&desc_cap=100'
             }).then(function successCallback(response) {
                 console.log(response);
                 var card = $scope.createCard(response.data);
