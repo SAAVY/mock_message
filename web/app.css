@@ -140,6 +140,10 @@
     display: inline-block;;
 }
 
+iframe {
+    max-height: 300px; /* or whatever */
+}
+
 .card.has-images .bottom-div {
     max-width: 100%;
     max-height: 45%;
