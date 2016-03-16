@@ -1,4 +1,4 @@
-angular.module('magpieDemo.controllers').controller('messageController', ['$scope', '$location', '$sce', '$http', '$window', function($scope, $location, $sce, $http, $window) {
+angular.module('magpieDemo.controllers').controller('messageController', ['$scope', '$location', '$sce', '$http', function($scope, $location, $sce, $http) {
     $scope.names = ["Alice", "Avy", "Meenu", "Samiya", "Varun"];
     $scope.currentReceiver = "Alice";
     $scope.currentMessage = "";
@@ -66,7 +66,7 @@ angular.module('magpieDemo.controllers').controller('messageController', ['$scop
             cardHtml += "<div class=\"media\" width=\"100%\">" + validJson['data']['media']['data'][0]['iframe'] + "</div>";
         } else if (validJson['data']['images'] != null && validJson['data']['images']['data'] != null) {
             cardHtml += "<div class=\"images\">";
-            cardHtml += "<img class=\"image\" src=\"" + validJson['data']['images']['data'][0]['url'] + "\" max-width=\"400px\" max-height=\"300px\"></img>";
+            cardHtml += "<img class=\"image\" src=\"" + validJson['data']['images']['data'][0]['url'] + "\" width=\"100%\"></img>";
             cardHtml += "</div>";
         }
         cardHtml += "</div>"; //Closes Left Col Div
@@ -87,10 +87,7 @@ angular.module('magpieDemo.controllers').controller('messageController', ['$scop
         return cardHtml;
     }
 
-    $window.setInterval(function() {
-      var elem = document.getElementById('message_list');
-      elem.scrollTop = elem.scrollHeight;
-    }, 100);
+
 
     $scope.sendMessage = function() {
         console.log($scope.currentReceiver);
@@ -115,6 +112,10 @@ angular.module('magpieDemo.controllers').controller('messageController', ['$scop
         if ($scope.currentReceiver == "Varun") {
             $scope.varunsMessages.push($scope.htmlContent);
         }
+
+        //Scroll Down
+        setTimeout(function() { var elem = document.getElementById('message_list');
+        elem.scrollTop = elem.scrollHeight; },500);
 
         var urlArray = [];
         var matchArray;
@@ -156,6 +157,11 @@ angular.module('magpieDemo.controllers').controller('messageController', ['$scop
                 if (curReceiver == "Varun") {
                     $scope.varunsMessages.push($sce.trustAsHtml(card));
                 }
+
+                //Scroll Down
+                setTimeout(function() { var elem = document.getElementById('message_list');
+                elem.scrollTop = elem.scrollHeight; },500);
+
             }, function errorCallback(response) {
                 alert(response);
             });
